@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/font-awesome.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div ng-app="homeApp">
+        <div class="container" ng-controller="homeCtrl">
+            <button ng-click="scrollToSession()">Scroll</button>
+            <div class="jumbotron">
+                <p class="lead">Name : {{homeData.Name}}</p>
+                <p class="lead">Age : {{homeData.Age}}</p>
+                <p class="lead">Job : {{homeData.Job}}</p>
+            </div>
+
+            <h1>{{myDate | date:myFormat}}</h1>  
+            <h3>
+                {{filterData.duration1}}
+            </h3> 
+            <h3>{{filterData.duration2}}</h3>
+            <h3>Cookies</h3>
+            <button class="btn btn-default" ng-click="saveEventCookie()">Store Cookie</button>
+            <button class="btn btn-default" ng-click="getEventFromCookie()">Get Cookie</button>
+            <button class="btn btn-default" ng-click="removeEventCookies()">Remove Cookie</button>
+
+            <input  ng-model="markup" type="text" class="form-control"/>
+            <div id="appendHere"></div>
+            <input class="btn btn-default" value="Append" ng-click="Append(markup)" />
+
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Skill</th>
+                        <th>Years</th>
+                        <th>Likes</th>
+                        <th>Like/Dislike</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="skill in homeData.Skills">
+                        <td>{{skill.Name}}</td>
+                        <td>{{skill.Years}}</td>
+                        <td>{{skill.Likes}}</td>
+                        <td><a ng-click="LikeSkill(skill)" class="btn btn-success"><i class="fa fa-thumbs-up"></i></a> | <a ng-click="DislikeSkill(skill)" class="btn btn-danger"><i class="fa fa-thumbs-o-down"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>{{timeoutName}}</h3> <button class="btn btn-default" ng-click="CancelTimeout()">Cancel Timeout</button>
+            <div>
+                <table class="table" >
+                    <tr ng-repeat="p in Posts">
+                        <td>{{p.userId}}</td>
+                        <td>{{p.title}}</td>
+                    </tr>
+                </table>
+                
+            </div>
+            <h3 id="session">{{test}}</h3>
+        </div>
+    </div>
+
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-resource.min.js"></script>
+    <script src="Scripts/angular/home-app.js"></script>
+    <script src="Scripts/angular/homeCtrl.js"></script>
+    <script src="Scripts/angular/services/homeData.js"></script>
+    <script src="Scripts/angular/angular.locale-ar.js"></script>
+    <script src="Scripts/angular/services/filter-service.js"></script>
+    <script src="Scripts/angular/angular-cookies.js"></script>
+</body>
+</html>
